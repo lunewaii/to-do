@@ -7,10 +7,10 @@ const TodoForm = ({addTodo}) => {
     const handleSubmit = (e) => {
         e.preventDefault()
         if(!value || !category) return
+        setValue("")
+        setCategory("")
         addTodo(value, category)
         console.log(newTodo)
-        setValue('')
-        setCategory('')
     }
 
   return (
