@@ -27,6 +27,17 @@ function App() {
     }
   ])
 
+  const addTodo = (text, category) => {
+    const newTodo = [...todos, {
+      id: todos.length + 1,
+      text,
+      category,
+      isCompleted: false
+    }]
+
+    setTodos(newTodo);
+  }
+
   return (
     //no react, precisa ter uma div que apareça todo mundo, ou não funciona!
     <div className="app">
@@ -34,10 +45,10 @@ function App() {
       <div className="todo-list">
         {/* sempre que for usar um codigo js, vai entre {} */}
         {todos.map((todo) => ( //esse objeto é acessado com (), diferente do javascript
-          <Todo todo={todo} />//chama o componente todo, e passa o objeto todo como props
+          <Todo key={todo.id} todo={todo} />//chama o componente todo, e passa o objeto todo como props
         ))}
       </div>
-      <TodoForm/>
+      <TodoForm addTodo={addTodo}/>
     </div>
   )
 }
