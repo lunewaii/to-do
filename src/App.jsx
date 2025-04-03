@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react'
 import "./App.css";
 
 import Todo from './components/Todo.jsx';
+import TodoForm from './components/TodoForm.jsx';
 
 function App() {
   const [todos, setTodos] = useState([
@@ -27,6 +28,7 @@ function App() {
   ])
 
   return (
+    //no react, precisa ter uma div que apareça todo mundo, ou não funciona!
     <div className="app">
       <h1>Lista de Tarefas</h1>
       <div className="todo-list">
@@ -35,6 +37,7 @@ function App() {
           <Todo todo={todo} />//chama o componente todo, e passa o objeto todo como props
         ))}
       </div>
+      <TodoForm/>
     </div>
   )
 }
