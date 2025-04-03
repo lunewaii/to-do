@@ -1,6 +1,6 @@
 # projeto simples de uma task list com html/css, javascript e react!
 
-> npm run dev
+> npm run dev - para rodar o código
 
 # React + Vite
 
