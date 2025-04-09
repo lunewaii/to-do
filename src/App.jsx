@@ -1,5 +1,10 @@
 import { useEffect, useState } from 'react'
 
+import "./App.css";
+
+import Todo from './components/Todo.jsx';
+import TodoForm from './components/TodoForm.jsx';
+
 function App() {
   const [todos, setTodos] = useState([
     {
@@ -22,19 +27,28 @@ function App() {
     }
   ])
 
+  const addTodo = (text, category) => {
+    const newTodo = [...todos, {
+      id: todos.length + 1,
+      text,
+      category,
+      isCompleted: false
+    }]
+
+    setTodos(newTodo);
+  }
+
   return (
+    //no react, precisa ter uma div que apareça todo mundo, ou não funciona!
     <div className="app">
       <h1>Lista de Tarefas</h1>
       <div className="todo-list">
+        {/* sempre que for usar um codigo js, vai entre {} */}
         {todos.map((todo) => ( //esse objeto é acessado com (), diferente do javascript
-          <div className="todo">
-            <div className="content">
-              <p>{todo.text}</p>
-
-            </div>
-          </div>
+          <Todo key={todo.id} todo={todo} />//chama o componente todo, e passa o objeto todo como props
         ))}
       </div>
+      <TodoForm addTodo={addTodo}/>
     </div>
   )
 }
